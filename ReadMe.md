@@ -11,7 +11,7 @@ In bigger project, it can be used as a **Subsystem for automation or Webscrappin
 ---
 
 ## Table of Contents  
-  
+
 - [Installation](#installation)
 - [Usage](#usage)
 - [WIP](#WIP)
