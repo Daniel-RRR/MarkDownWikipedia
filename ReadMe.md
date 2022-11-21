@@ -1,6 +1,6 @@
 ![Mark down Wikipedia](banner.png)
 
-<h6 align="center">Scrape Wikipedia Articles into .md-files</h6>
+<h3 align="center">Scrape Wikipedia Articles into .md-files</h3>
 <p align="center">
     <a href="#Installation">Installation</a> •
     <a href="#Usage">Usage</a> •

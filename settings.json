@@ -4,7 +4,7 @@
     ,"id of article"  : "mw-content-text"
     ,"id of title"    : "mw-page-title-main"
 
-    ,"parse list"     :  false 
+    ,"parse list"     :  true 
     ,"plaintext"      :  false
     ,"media"          :  true
     
