@@ -13,8 +13,9 @@ settings  = json.load(open("settings.json","r"))
 converter = md_conv.md_converter()
 converter.settings = settings
 
-url = "https://"+settings["language"]+".wikipedia.org/wiki/Markdown" if len(sys.argv) == 1 else sys.argv[1]
-urls = open("to_scrape.txt","r").read().split("\n") if settings["parse list"] else [url]
+urls = open("to_scrape.txt","r").read().split("\n") if settings["parse list"] else ["https://"+settings["language"]+".wikipedia.org/wiki/Markdown"]
+if len(sys.argv) == 2: 
+    urls = [sys.argv[1]] if sys.argv[1].startswith("https://") else["https://"+sys.argv[1]]
 
 
 current_article = 1

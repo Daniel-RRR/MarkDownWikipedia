@@ -32,12 +32,12 @@ git clone https://github.com/Daniel-RRR/MarkDownWikipedia.git
   
 ## Usage
   
-###### enter url as parameter
+#### enter url as parameter
 ````bash
-python Src/main.py https://"+settings["language"]+".org/wiki/Markdown
+python Src/main.py en.wikipedia.org/wiki/Markdown
 ````
   
-###### configurable options
+#### configurable options
 | key                 | description                          | default            |
 |---------------------|--------------------------------------|--------------------|
 | default output      | filepath of finished scrape          | output.md          |
@@ -53,14 +53,11 @@ python Src/main.py https://"+settings["language"]+".org/wiki/Markdown
   
 ## WIP
   
-* MVP (table,code,ul,ol,img)
+* MVP (table,code,ul,ol)
 * generate TOC
 * actual implementation of settings.json (currently stub only)
 * write down meta-data of generation
-* use ``-a`` parameter to convert a list of url saved in a file
 * use ``-r`` parameter to convert in plain-text, without md-keywords
-* use ``-m`` parameter to convert also the pictures of an article
-* use ``-u`` parameter followed by the url to set the article by a cli arg
 
 ---
 
