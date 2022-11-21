@@ -34,7 +34,7 @@ git clone https://github.com/Daniel-RRR/MarkDownWikipedia.git
   
 ###### enter url as parameter
 ````bash
-python Src/main.py https://en.wikipedia.org/wiki/Markdown
+python Src/main.py https://"+settings["language"]+".org/wiki/Markdown
 ````
   
 ###### configurable options
@@ -66,7 +66,7 @@ python Src/main.py https://en.wikipedia.org/wiki/Markdown
 
 ## Bugs
 
-* links refering to wikipedia needs to be in the same language as set in settings (i.e. **en** for ``en.wikipedia.org`` )
+* links refering to wikipedia needs to be in the same language as set in settings (i.e. **en** for ``"+settings["language"]+".org`` )
   
 ---
   

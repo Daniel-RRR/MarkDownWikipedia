@@ -9,16 +9,17 @@ title_class_name = "mw-page-title-main"
 title_id_name = "firstHeading"
 article_id_name = "mw-content-text"
 
-converter = md_conv.md_converter()
 settings  = json.load(open("settings.json","r"))
+converter = md_conv.md_converter()
+converter.settings = settings
 
-
-url = "https://en.wikipedia.org/wiki/Markdown" if len(sys.argv) == 1 else sys.argv[1]
+url = "https://"+settings["language"]+".wikipedia.org/wiki/Markdown" if len(sys.argv) == 1 else sys.argv[1]
 urls = open("to_scrape.txt","r").read().split("\n") if settings["parse list"] else [url]
 
 
 current_article = 1
 for url in urls:
+    converter.md_str = ""
     soup      = BeautifulSoup(requests.get(url).text, 'lxml')
 
     article = soup.find(id=article_id_name).div
