@@ -42,6 +42,12 @@ open ``main.py`` and insert in L.4 your article to convert
 * use ``-t`` parameter to convert in plain-text, without md-keywords
 * use ``-m`` parameter to convert also the pictures of an article
 * use ``-u`` parameter followed by the url to set the article by a cli arg
+
+---
+
+## known bugs
+
+* links refering to wikipedia needs to be in the same language as set in settings (i.e. **en** for ``en.wikipedia.org`` )
   
 ---
   
