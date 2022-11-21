@@ -1,12 +1,13 @@
 {
      "default output" : "output.md" 
 
-    ,"class of title" : "mw-page-title-main"
     ,"id of article"  : "mw-content-text"
+    ,"id of title"    : "mw-page-title-main"
 
     ,"parse list"     :  false 
     ,"plaintext"      :  false
-    ,"pictures"       :  false
+    ,"media"          :  true
     
     ,"language"       : "en"
+    ,"meta-data"      : "true"
 }

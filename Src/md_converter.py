@@ -18,10 +18,12 @@ class md_converter:
             elif len(content) == 3              : return content[1].contents[0]
 
         if "INNER_TAG" in keyword : 
-            content_str = content[0].contents[0]
+            if len(content[0].contents) != 0:content_str = content[0].contents[0]
+            else: return content[1].text
             if content[0].name == "b"           : return "**"+content_str+"**"
             if content[0].name == "i"           : return "*"+content_str+"*"
             if content[0].name == "a"           : return "["+content_str+"]("+content[0].attrs["href"]+")" if content[0].attrs["href"].startswith("http") else "["+content_str+"]("+"https://en.wikipedia.org"+content[0].attrs["href"]+")"
+            #if content[0].name == "link"        : content[0].parent.attrs["href"]#return "["+content_str+"]("+content[0].parent.attrs["href"]+")"
 
     def _append_md_str(self,content) -> str:    
         self.md_str += content
@@ -49,7 +51,20 @@ class md_converter:
     def add_italic(self,content) -> None:
         content = self._sanitice_str(content)
         self._append_md_str("*"+content+"*")
-
+    
+    def add_image(self,content) -> None:
+        media = content[0].contents[0]
+        #self._append_md_str("----\n  ")        
+        self.add_linebreak()
+        if "video" in media.name:
+            url = "https://en.wikipedia.org"+content[0].contents[2].contents[0].contents[0].attrs["href"]
+            self.add_bold("![VIDEO:"+content[0].contents[2].contents[1]+"]("+url+")")
+        elif "a" in media.name:
+            img = media.contents[0]
+            self._append_md_str("!["+img.attrs["alt"]+"](https:"+img.attrs["src"]+")  \n")
+            self.add_italic(""+content[0].contents[2].contents[1].strip())
+        self.add_linebreak()
+        #self._append_md_str("  \n----\n  ")        
 
     #>>> STRUCTURE <<<#
     def add_link(self,content,size=3) -> None: 
