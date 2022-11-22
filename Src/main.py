@@ -7,24 +7,29 @@ import sys
 
 settings  = json.load(open("settings.json","r"))
 converter = md_conv.md_converter()
-converter.settings = settings
 
 
-if   len(sys.argv) == 2     : to_scrape = [sys.argv[1]]
+if   len(sys.argv) > 1      : to_scrape = [sys.argv[1]]
+if   len(sys.argv) > 2      : settings["language"] = sys.argv[2].split("=")[1]
 elif settings["parse list"] : to_scrape = open("to_scrape.txt","r").read().split("\n")
 else                        : to_scrape = ["https://en.wikipedia.org/wiki/Markdown"]
 
 
 current_article = 1
 for current in to_scrape:
-    
+    if current != "" and not current.startswith("#") : 
+        
 
-    #>>> GET VALID URL <<<#
-    if   not current or current.startswith("#") : saniticed_url = ""
-    elif current.startswith("https://")         : saniticed_url = current
-    elif len(current.split(".")) == 3           : saniticed_url = "https://"+current
-    elif len(current.split("/")) == 2           : saniticed_url = "https://"+settings["language"]+".wikipedia.org/"+current
-    elif len(current.split("/")) == 1           : saniticed_url = "https://"+settings["language"]+".wikipedia.org/wiki/"+current
+        #>>> GET VALID LANGUAGE <<<#
+        if   "lang"     in current : current,converter.language = current.split(" lang=") if "lang" in current else [current,settings["language"]]
+        elif "." in current        : converter.language = current.split(".")[0].split("https://")[1] if "https" in current else current.split(".")[0]
+        else                       : converter.language = settings["language"]
+
+        #>>> GET VALID URL <<<#
+        if   current.startswith("https://")   : saniticed_url = current
+        elif len(current.split(".")) == 3     : saniticed_url = "https://"+current
+        elif len(current.split("/")) == 2     : saniticed_url = "https://"+converter.language+".wikipedia.org/"+current
+        elif len(current.split("/")) == 1     : saniticed_url = "https://"+converter.language+".wikipedia.org/wiki/"+current
 
 
     #>>> PREPARATION <<<#
@@ -66,8 +71,9 @@ for current in to_scrape:
 
 
         #>>> FINISHING <<<#
-        print("finished "+str(current_article)+":   "+current)
+        print("DONE:   "+str(current_article)+" / "+converter.language+" / "+current)
         with open("out/"+str(current_article)+".md","w",encoding="utf-8") as file:
             file.write(converter.md_str)
         current_article += 1
+        saniticed_url = ""
 

@@ -1,6 +1,6 @@
 ![Mark down Wikipedia](banner.png)
 
-<h3 align="center">Scrape Wikipedia Articles into .md-files</h3>
+<h3 align="center">Scrape Wikipedia into .md-files</h3>
 <p align="center">
     <a href="#Installation">Installation</a> •
     <a href="#Usage">Usage</a> •
@@ -31,19 +31,28 @@ git clone https://github.com/Daniel-RRR/MarkDownWikipedia.git
   
 ## Usage
   
-#### Enter url as parameter
+### Enter url as parameter
 ````bash
-# use...
 python main.py https://en.wikipedia.org/wiki/Markdown
-# or...
-python main.py en.wikipedia.org/wiki/Markdown
-# or with your set default language shortend to...
+````  
+  
+Can be shortend to the **name** of article, will be written in **language of settings**.
+````bash
+python main.py markdown            
+````  
+  
+Shortend urls can use a **specific languages** by adding ``-`` and its **abbreviation** as second argument
+````bash
+python main.py markdown lang=pl    # polish             
+````  
+  
+further valid formats:
+````bash
+python main.py en.wikipedia.org/wiki/Markdown  
 python main.py wiki/Markdown
-# even down to...
-python main.py markdown
 ````
 
-#### Itterate through to_scrape.txt
+### Itterate through to_scrape.txt
 content is split by ``\n``  
 write comments by ``#``  
 empty lines are valid    
@@ -58,10 +67,13 @@ pl.wikipedia.org/wiki/Markdown
 
 # back to your default set in settings.json
 wiki/markdown
-Markdown
+markdown
+
+# lang for specific 
+markdown lang=pl
 ````
   
-#### configurable options
+#### configurables in settings.json
 | key                 | description                          | default            |
 |---------------------|--------------------------------------|--------------------|
 | id of article       | id of article for BeautyfulSoup      | mw-content-text    |

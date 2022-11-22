@@ -1,9 +1,7 @@
 {
-     "default output" : "output.md" 
-
-    ,"id of article"  : "mw-content-text"
+     "id of article"  : "mw-content-text"
     ,"id of title"    : "firstHeading"
-
+    
     ,"parse list"     :  true 
     ,"plaintext"      :  false
     ,"media"          :  true

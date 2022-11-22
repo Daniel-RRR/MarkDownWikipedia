@@ -6,4 +6,7 @@ pl.wikipedia.org/wiki/Markdown
 
 # back to your default set in settings.json
 wiki/markdown
-Markdown
+markdown
+
+# lang for specific 
+markdown lang=pl

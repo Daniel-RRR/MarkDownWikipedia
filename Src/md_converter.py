@@ -4,7 +4,7 @@ from soupsieve import bs4
 class md_converter:
     md_str = ""
     current_declared_collumns = []
-    settings = {}
+    language =""
 
 
 
@@ -23,7 +23,7 @@ class md_converter:
             else: return content[1].text
             if content[0].name == "b"           : return "**"+content_str+"**"
             if content[0].name == "i"           : return "*"+content_str+"*"
-            if content[0].name == "a"           : return "["+content_str+"]("+content[0].attrs["href"]+")" if content[0].attrs["href"].startswith("http") else "["+content_str+"]("+"https://"+self.settings["language"]+".wikipedia.org"+content[0].attrs["href"]+")"
+            if content[0].name == "a"           : return "["+content_str+"]("+content[0].attrs["href"]+")" if content[0].attrs["href"].startswith("http") else "["+content_str+"]("+"https://"+self.language+".wikipedia.org"+content[0].attrs["href"]+")"
             #if content[0].name == "link"        : content[0].parent.attrs["href"]#return "["+content_str+"]("+content[0].parent.attrs["href"]+")"
 
     def _append_md_str(self,content) -> str:    
@@ -58,7 +58,7 @@ class md_converter:
         #self._append_md_str("----\n  ")        
         self.add_linebreak()
         if "video" in media.name:
-            url = "https://"+self.settings["language"]+".wikipedia.org"+content[0].contents[2].contents[0].contents[0].attrs["href"]
+            url = "https://"+self.language+".wikipedia.org"+content[0].contents[2].contents[0].contents[0].attrs["href"]
             self.add_bold("![VIDEO:"+content[0].contents[2].contents[1]+"]("+url+")")
         elif "a" in media.name:
             img = media.contents[0]
@@ -70,7 +70,7 @@ class md_converter:
     #>>> STRUCTURE <<<#
     def add_link(self,content,size=3) -> None: 
         link = content.attrs["href"]
-        saniticed_link = link if link.startswith("http") else "https://"+self.settings["language"]+".wikipedia.org"+link
+        saniticed_link = link if link.startswith("http") else "https://"+self.language+".wikipedia.org"+link
         saniticed_text = self._sanitice_str(content.contents)
         self.md_str += "["+saniticed_text+"]("+saniticed_link+")"
 
