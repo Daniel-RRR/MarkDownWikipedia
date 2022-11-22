@@ -5,7 +5,6 @@
     <a href="#Installation">Installation</a> •
     <a href="#Usage">Usage</a> •
     <a href="#WIP">WIP</a> •
-    <a href="#Bugs">Bugs</a> •
     <a href="#License">License</a>
 </p>
 
@@ -32,38 +31,56 @@ git clone https://github.com/Daniel-RRR/MarkDownWikipedia.git
   
 ## Usage
   
-#### enter url as parameter
+#### Enter url as parameter
 ````bash
-python Src/main.py en.wikipedia.org/wiki/Markdown
+# use...
+python main.py https://en.wikipedia.org/wiki/Markdown
+# or...
+python main.py en.wikipedia.org/wiki/Markdown
+# or with your set default language shortend to...
+python main.py wiki/Markdown
+# even down to...
+python main.py markdown
+````
+
+#### Itterate through to_scrape.txt
+content is split by ``\n``  
+write comments by ``#``  
+empty lines are valid    
+  
+all of the following formats are valid
+````bash
+https://en.wikipedia.org/wiki/Markdown
+
+# multi-langugage support
+es.wikipedia.org/wiki/Markdown
+pl.wikipedia.org/wiki/Markdown
+
+# back to your default set in settings.json
+wiki/markdown
+Markdown
 ````
   
 #### configurable options
 | key                 | description                          | default            |
 |---------------------|--------------------------------------|--------------------|
-| default output      | filepath of finished scrape          | output.md          |
 | id of article       | id of article for BeautyfulSoup      | mw-content-text    |
-| id of title         | id of title for BeautyfulSoup        | mw-page-title-main |
+| id of title         | id of title for BeautyfulSoup        | firstHeading       |
 | parse list          | parse list.txt of urls               | false              |
 | plaintext           | no markdown, just ascii              | false              |
 | media               | pictures and references to videos    | true               |
 | language            | domain of wikipedia to reference     | en                 |
-| meta-data            | adds header with meta info     | true                 |
+| meta-data            | adds header with meta info          | true               |
   
 ---
   
 ## WIP
   
-* MVP (table,code,ul,ol)
+* table, code/pre, ul/ol
 * generate TOC
-* actual implementation of settings.json (currently stub only)
 * write down meta-data of generation
-* use ``-r`` parameter to convert in plain-text, without md-keywords
+* plaintext
 
----
-
-## Bugs
-
-* links refering to wikipedia needs to be in the same language as set in settings (i.e. **en** for ``"+settings["language"]+".org`` )
   
 ---
   
