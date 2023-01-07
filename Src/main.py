@@ -19,7 +19,6 @@ current_article = 1
 for current in to_scrape:
     if current != "" and not current.startswith("#") : 
         
-
         #>>> GET VALID LANGUAGE <<<#
         if   "lang"     in current : current,converter.language = current.split(" lang=") if "lang" in current else [current,settings["language"]]
         elif "." in current        : converter.language = current.split(".")[0].split("https://")[1] if "https" in current else current.split(".")[0]
@@ -30,6 +29,8 @@ for current in to_scrape:
         elif len(current.split(".")) == 3     : saniticed_url = "https://"+current
         elif len(current.split("/")) == 2     : saniticed_url = "https://"+converter.language+".wikipedia.org/"+current
         elif len(current.split("/")) == 1     : saniticed_url = "https://"+converter.language+".wikipedia.org/wiki/"+current
+
+
 
 
     #>>> PREPARATION <<<#

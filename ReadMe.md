@@ -41,7 +41,7 @@ Can be shortend to the **name** of article, will be written in **language of set
 python main.py markdown            
 ````  
   
-Shortend urls can use a **specific languages** by adding ``-`` and its **abbreviation** as second argument
+Shortend urls can use a **specific languages** by adding ``lang=`` and its **abbreviation** as second argument
 ````bash
 python main.py markdown lang=pl    # polish             
 ````  

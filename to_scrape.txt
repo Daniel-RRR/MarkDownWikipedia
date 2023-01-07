@@ -7,6 +7,6 @@ pl.wikipedia.org/wiki/Markdown
 # back to your default set in settings.json
 wiki/markdown
 markdown
-
+Stede_Bonnet
 # lang for specific 
 markdown lang=pl
